@@ -39,7 +39,7 @@ class ChefInventory:
                 print("Set CHEF_PEMFILE, CHEF_USER and CHEF_API_SERVER environment vars. They might be located under ~/.chef/knife_local.rb or ~/.chef/knife.rb")
                 exit(0)
 
-            self.api=chef.ChefAPI(CHEF_SERVER_URL, pemfile, username)
+            self.api=chef.ChefAPI(chef_server_url, pemfile, username)
         if not self.api:
             print("Could not find chef configuration", file=sys.stderr)
             sys.exit(1)

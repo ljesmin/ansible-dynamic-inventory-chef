@@ -133,11 +133,12 @@ class ChefInventory:
                 groups[environment] = []
             groups[environment].append(name)
 
-            for r in node["automatic"]["roles"]:
-                role = self.to_safe(r)
-                if role not in groups:
-                    groups[role] = []
-                groups[role].append(name)
+            if node["automatic"]["roles"] is not None:
+                for r in node["automatic"]["roles"]:
+                    role = self.to_safe(r)
+                    if role not in groups:
+                        groups[role] = []
+                    groups[role].append(name)
 
             for i in node["run_list"]:
                 m = re.match(r'(role|recipe)\[(.*)\]', i)
